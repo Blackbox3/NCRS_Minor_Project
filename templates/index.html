@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Character Recognition</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-
-  <body>
-    <h1>Upload Image for Character Recognition</h1>
-    <form action="/predict" method="post" enctype="multipart/form-data">
-      <input type="file" name="image" />
-      <input type="submit" value="Upload" />
-    </form>
-  </body>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image for Character Recognition</h1>
+        <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" id="imageInput" accept="image/*" onchange="previewImage(event)" />
+            <div id="imagePreview" class="image-preview"></div>
+            <input type="submit" value="Upload" />
+        </form>
+    </div>
+    
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var imagePreview = document.getElementById('imagePreview');
+                imagePreview.innerHTML = '<img src="' + reader.result + '" />';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
 </html>

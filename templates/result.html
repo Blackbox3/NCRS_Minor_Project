@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Character Recognition Result</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Character Recognition Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-  <h1>Character Recognition Result</h1>
-  <p>Predicted Character: {{ prediction }}</p>
+    <div class="container">
+        <h1>Character Recognition Result</h1>
+        <div class="result-container">
+            <p>Predicted Character: {{ prediction }}</p>
+        </div>
+        <a href="/" class="btn">Back to Upload</a>
+    </div>
 </body>
-
 </html>
